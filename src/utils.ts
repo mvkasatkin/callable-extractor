@@ -1,7 +1,7 @@
 import generate from '@babel/generator'
 import traverse, { Node, NodePath } from '@babel/traverse'
-import { parse, ParserOptions } from '@babel/parser'
-import { transpile, CompilerOptions } from 'typescript'
+import { parse, ParserOptions, ParseResult } from '@babel/parser'
+import { transpile, CompilerOptions, ScriptTarget } from 'typescript'
 
 export const callableTypes: NodePath['type'][] = [
   'ClassMethod',
@@ -20,6 +20,7 @@ export function parseAst (code: string, opts?: ParserOptions) {
 
 export function getNodePaths (parent: Node, types?: Node['type'][]) {
   const result: NodePath[] = []
+
   traverse(parent, {
     enter(nodePath) {
       if (!types || types.includes(nodePath.node.type)) {
@@ -73,3 +74,5 @@ export function getParentNodeByType (nodePath: NodePath, type: Node['type']): No
 export class ErrorCallableNotFound extends Error {
   public constructor () { super('Callable not found') }
 }
+
+export { ParserOptions, ParseResult, CompilerOptions, ScriptTarget, Node, NodePath }

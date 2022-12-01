@@ -257,7 +257,7 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor':        'error',
     '@typescript-eslint/no-misused-new':                'off',
     '@typescript-eslint/no-namespace':                  'off',
-    'jsdoc/check-line-alignment':                       ['error', 'always'],
+    'jsdoc/check-line-alignment':                       'off',
     'quote-props':                                      'off',
     'radix':                                            'error',
     'require-await':                                    'off',
@@ -286,7 +286,7 @@ module.exports = {
       'error',
       'never'
     ],
-    'valid-jsdoc':        'error',
+    'valid-jsdoc':        'off',
     'vars-on-top':        'error',
     'wrap-iife':          'error',
     'wrap-regex':         'error',

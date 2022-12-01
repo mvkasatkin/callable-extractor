@@ -1,5 +1,6 @@
 import { CallableExtractor } from './index'
 import * as path from 'path'
+import { ErrorCallableNotFound } from './utils'
 
 const FILEPATH = path.resolve(__dirname, '__test__/file1.ts')
 
@@ -137,5 +138,14 @@ describe('ce', () => {
     fn.scope = { b: 2 }
     fn.call(3)
     expect(fn.context.prop).toEqual(6)
+  })
+
+  test('callable not found', () => {
+    const ce = new CallableExtractor('')
+    expect.assertions(4)
+    try { ce.getCallable() } catch (e) { expect(e).toBeInstanceOf(ErrorCallableNotFound) }
+    try { ce.getCallableByName('name') } catch (e) { expect(e).toBeInstanceOf(ErrorCallableNotFound) }
+    try { ce.getCallableByLineNumber(1) } catch (e) { expect(e).toBeInstanceOf(ErrorCallableNotFound) }
+    try { ce.getCallableByLineContent('') } catch (e) { expect(e).toBeInstanceOf(ErrorCallableNotFound) }
   })
 })
