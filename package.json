@@ -1,6 +1,6 @@
 {
   "name": "callable-extractor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "JS(X)/TS(X) Callable Extractor",
   "repository": "github:mvkasatkin/code-extractor",
   "source": "src/index.ts",
